@@ -1,7 +1,10 @@
 const puppeteer = require('puppeteer');
-const fs = require('fs');
+const cliProgress = require('cli-progress');
 
 const getIp = async () => {
+    const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_grey);
+    console.log("Fetching Ips");
+    bar1.start(1, 0);
     try {
         const browser = await puppeteer.launch(
             {
@@ -30,7 +33,8 @@ const getIp = async () => {
             return ips;
         })
         await browser.close();
-        // console.log(data);
+        bar1.update(1);
+        bar1.stop();
         return data;
 
     }

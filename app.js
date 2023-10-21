@@ -19,9 +19,9 @@ function run() {
                     .catch(err => console.log(err))
                     .finally(() => {
                         mongoose.connection.close();
-                        setTimeout(() => {
-                            run();
-                        }, 60000)
+                        // setTimeout(() => {
+                        //     run();
+                        // }, 60000)
                     })
             })
         })
